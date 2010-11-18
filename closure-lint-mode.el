@@ -1,9 +1,11 @@
-;;; closure-lint-mode.el -- Minor mode for the Closure Linter
+;;; closure-lint-mode.el --- minor mode for the Closure Linter
 
 ;; Copyright (C) 2010 Roman Scherer
 
-;; Author:  Roman Scherer
+;; Author:  Roman Scherer <roman@burningswell.com>
+;; Maintainer: Roman Scherer <roman@burningswell.com>
 ;; Created: 18 Nov 2010
+;; Version: 0.1
 ;; Keywords: tools closure javascript lint flymake
 
 ;; This program is free software; you can redistribute it and/or
@@ -35,6 +37,8 @@
 ;;
 ;; C-c C-e  -  Show the error message of a line with errors.
 ;; C-c C-f  -  Fix the current buffer by calling fixjsstyle.
+
+;;; Code:
 
 (require 'flymake)
 
@@ -103,15 +107,12 @@ the current buffer's file is a Javascript file."
 
 (add-hook 'find-file-hooks 'closure-lint-find-file-hook)
 
-(setq flymake-allowed-file-name-masks
-      (cons '(".+\\.js$"
-              closure-lint-flymake-init
-              flymake-simple-cleanup
-              flymake-get-real-file-name)
-            flymake-allowed-file-name-masks))
+(add-to-list 'flymake-allowed-file-name-masks
+             '(".+\\.js$" closure-lint-flymake-init flymake-simple-cleanup flymake-get-real-file-name))
 
-(setq flymake-err-line-patterns
-      (cons '("^Line \\([[:digit:]]+\\), E:\\([[:digit:]]+\\):\\(.+\\)$" nil 1 nil 3)
-            flymake-err-line-patterns))
+(add-to-list 'flymake-err-line-patterns
+             '("^Line \\([[:digit:]]+\\), E:\\([[:digit:]]+\\):\\(.+\\)$" nil 1 nil 3))
 
 (provide 'closure-lint-mode)
+
+;;; closure-lint-mode.el ends here
