@@ -7,6 +7,7 @@
 ;; Created: 18 Nov 2010
 ;; Version: 0.1
 ;; Keywords: tools closure javascript lint flymake
+;; Url: https://github.com/r0man/closure-lint-mode
 
 ;; This program is free software; you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License
@@ -59,6 +60,7 @@
     map)
   "The keymap used in `closure-lint-mode buffers.")
 
+;;;###autoload 
 (define-minor-mode closure-lint-mode
   "Closure Lint mode.
      With no argument, this command toggles the mode.
